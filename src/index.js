@@ -7,6 +7,8 @@ import {PrivateRoute} from "./utils/PrivateRoute";
 import HomeComponent from "./pages/HomeComponent";
 import CompanyComponent from "./pages/CompanyComponent";
 import { PrivateRouteNew } from './utils/PrivateRouteNew';
+import Config from './utils/config';
+import LogoutComponent from './pages/LogoutComponent';
 
 ReactDOM.render(
 <Router>
@@ -15,6 +17,11 @@ ReactDOM.render(
             exact 
             path="/" 
             component={Login}
+        ></Route>
+        <Route 
+            exact 
+            path={Config.logoutPageUrl}
+            component={LogoutComponent}
         ></Route>
         <PrivateRouteNew 
             exact 
