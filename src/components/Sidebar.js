@@ -1,5 +1,7 @@
 import React from "react";
 import usericon from "adminbsb-materialdesign/images/user.png";
+import Config from "../utils/config";
+import { Link } from "react-router-dom";
 
 class Sidebar extends React.Component {
 
@@ -93,19 +95,27 @@ class Sidebar extends React.Component {
                     width: "auto",
                     height: "348px"
                 }}>
-                    <ul className="list"
-                    style={{
-                        overflow: "hidden", 
-                        width: "auto", 
-                        height: "348px"}}
-                        >
-                    <li className="header">MAIN NAVIGATION</li>
-                    <li className="active">
-                        <a href="index.html" className="toggled waves-effect waves-block">
-                            <i className="material-icons">home</i>
-                            <span>Home</span>
-                        </a>
-                    </li>
+                    <ul 
+                        className="list"
+                        style={{
+                                overflow: "hidden", 
+                                width: "auto", 
+                                height: "348px"
+                            }}
+                    >
+                        {Config.sidebarItem.map((item)=>
+                            <li
+                                key={item.index}
+                                className={item.index==this.props.activepage ? "active": ""}>
+                                    <Link
+                                        to={item.url} className="toggled waves-effect waves-block">
+                                            <i className="material-icons">{item.icons}</i>
+                                            <span>{item.title}</span>
+                                    </Link>
+                                </li>
+                            )
+                        }
+                    
                    
                 </ul>
                 <div className="slimScrollBar" 
@@ -143,7 +153,7 @@ class Sidebar extends React.Component {
             
             <div className="legal">
                 <div className="copyright">
-                    © 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+                    © 2016 - 2017 <a href="#">AdminBSB - Material Design</a>.
                 </div>
                 <div className="version">
                     <b>Version: </b> 1.0.5
